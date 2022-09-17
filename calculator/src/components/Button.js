@@ -1,6 +1,6 @@
 import "../stylesheets/Button.css";
 
-function Button({ children }) {
+function Button({ children, handleClick }) {
   const isOperator = (value) => {
     return isNaN(value) && value !== "." && value !== "=";
   };
@@ -8,8 +8,9 @@ function Button({ children }) {
   return (
     <div
       className={
-        `container-button ${isOperator(children) ? "operator" : ""}`.trimEnd
+        `container-button ${isOperator(children) ? "operator" : ""}`.trimEnd()
       }
+      onClick={() => handleClick(children)}
     >
       {children}
     </div>
